@@ -1,6 +1,0 @@
-C:\Users\dcordoba.SSVMN\source\repos\ArchitectureComponents\Entities-POJO\bin\Debug\Entities-POJO.dll
-C:\Users\dcordoba.SSVMN\source\repos\ArchitectureComponents\Entities-POJO\bin\Debug\Entities-POJO.pdb
-C:\Users\dcordoba.SSVMN\source\repos\ArchitectureComponents\Entities-POJO\obj\Debug\Entities-POJO.csprojResolveAssemblyReference.cache
-C:\Users\dcordoba.SSVMN\source\repos\ArchitectureComponents\Entities-POJO\obj\Debug\Entities-POJO.csproj.CoreCompileInputs.cache
-C:\Users\dcordoba.SSVMN\source\repos\ArchitectureComponents\Entities-POJO\obj\Debug\Entities-POJO.dll
-C:\Users\dcordoba.SSVMN\source\repos\ArchitectureComponents\Entities-POJO\obj\Debug\Entities-POJO.pdb
