@@ -12,8 +12,24 @@ namespace DataAcess.Dao
     {   
                      
        private const string CONNECTION_STRING = "Data Source=.;Initial Catalog=MY_DATA_BASE;Integrated Security=True;Pooling=False";
-                
-       public static void ExecuteProcedure(SqlOperation sqlOperation)
+       
+       private static SqlDao instance;
+
+        private SqlDao()
+        {
+
+        }
+
+        public static SqlDao GetInstance()
+        {
+            if (instance == null)
+                instance = new SqlDao();
+
+            return instance;
+        }
+
+
+       public void ExecuteProcedure(SqlOperation sqlOperation)
        {
             using (var conn = new SqlConnection(CONNECTION_STRING))
             using (var command = new SqlCommand(sqlOperation.ProcedureName, conn)
@@ -31,7 +47,7 @@ namespace DataAcess.Dao
             }
        }
 
-       public static List<Dictionary<string, object>> ExecuteQueryProcedure(SqlOperation sqlOperation)
+       public List<Dictionary<string, object>> ExecuteQueryProcedure(SqlOperation sqlOperation)
         {
             var lstResult=new List<Dictionary<string,object>>();
 

@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using Entities_POJO;
-using DataAcess.Mapper;
+using DataAcess.Dao;
 
 namespace DataAcess.Crud
 {
     public abstract class CrudFactory
-    {   
-        protected SqlDao Dao;        
-        protected EntityMapper EntityMapper { get; set; }
-        
+    {
+        protected SqlDao dao;
+
         public abstract void Create(BaseEntity entity);
         public abstract T Retrieve<T>(BaseEntity entity);        
         public abstract List<T> RetrieveAll<T>();

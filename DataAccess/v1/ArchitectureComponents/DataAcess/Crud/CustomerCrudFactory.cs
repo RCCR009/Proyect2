@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using Entities_POJO;
 using DataAcess.Mapper;
+using DataAcess.Dao;
 
 namespace DataAcess.Crud
 {
     public class CustomerCrudFactory : CrudFactory
     {
+        CustomerMapper mapper;
+
         public CustomerCrudFactory() : base()
         {
-            EntityMapper = new CustomerMapper();
+            mapper = new CustomerMapper();
+            dao = SqlDao.GetInstance();
         }
 
         public override void Create(BaseEntity entity)
         {
-            
-            throw new NotImplementedException();
+            var customer=(Customer) entity;
+            var sqlOperation = mapper.GetCreateStatement(customer);
+            dao.ExecuteProcedure(sqlOperation);
         }
 
         public override void Delete(BaseEntity entity)

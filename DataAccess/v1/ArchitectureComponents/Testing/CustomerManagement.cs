@@ -10,29 +10,17 @@ namespace Testing
 {
     class CustomerManagement
     {
+        private CustomerCrudFactory crudFactory;
 
-        public void Create()
+        public CustomerManagement()
         {
+            crudFactory = new CustomerCrudFactory();
+        }
 
-            var customer = new Customer();
-            customer.Id = "0101110111";
-            customer.Name = "Chapulin";
-            customer.LastName = "Colorado";
-            customer.Age = 66;
-
-            try {
-                var crudCustomer = new CustomerCrudFactory();
-                crudCustomer.Create(customer);
-                Console.WriteLine("Customer was created");
-
-            } catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-
-
-
+        public void Create(Customer customer)
+        {
+            var crudCustomer = new CustomerCrudFactory();
+            crudCustomer.Create(customer);
 
         }
 
