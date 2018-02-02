@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAcess", "DataAcess\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities-POJO", "Entities-POJO\Entities-POJO.csproj", "{0F68B956-C774-491B-94F7-EC177D7DBD3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{4A9D3D13-0A33-4C06-B11E-CC731AD96DB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBoxTest", "Testing\SandBoxTest.csproj", "{4A9D3D13-0A33-4C06-B11E-CC731AD96DB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

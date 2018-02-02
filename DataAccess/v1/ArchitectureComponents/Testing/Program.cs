@@ -31,6 +31,7 @@ namespace Testing
                 Console.WriteLine(ex.Message);
             }
 
+            Console.ReadLine();
            
         }
     }
