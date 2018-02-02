@@ -11,7 +11,7 @@ namespace DataAcess.Dao
     public class SqlDao
     {   
                      
-       private const string CONNECTION_STRING = "Data Source=localhost;Initial Catalog=ERP_TEST;User ID=sa;Password=Soportando_123;Pooling=true;Min Pool Size=2;Max Pool Size=5";
+       private const string CONNECTION_STRING = "Data Source=.;Initial Catalog=MY_DATA_BASE;Integrated Security=True;Pooling=False";
                 
        public static void ExecuteProcedure(SqlOperation sqlOperation)
        {
