@@ -9,13 +9,21 @@ namespace Testing
 {
     class Program
     {
+       
+
         static void Main(string[] args)
         {
-            var mng = new CustomerManagement();
-            var customer = new Customer();
 
+            DoIt();
+
+        }
+
+        public static void DoIt() { 
             try
             {
+                var mng = new CustomerManagement();
+                var customer = new Customer();
+
                 Console.WriteLine("Customers CRUD options");
                 Console.WriteLine("1.CREATE");
                 Console.WriteLine("2.RETRIEVE ALL");
@@ -58,21 +66,54 @@ namespace Testing
                         }
 
                         break;
+                    case "4":
+                        Console.WriteLine("***************************");
+                        Console.WriteLine("******  UPDATE  **    *****");
+                        Console.WriteLine("***************************");
+
+                        Console.WriteLine("Type the customer id:");
+                        customer.Id= Console.ReadLine();
+                        customer = mng.RetrieveById(customer);
+
+                        if (customer != null)
+                        {
+                            Console.WriteLine(" ==> " + customer.GetEntityInformation());
+                            Console.WriteLine("Type a new name, actual value is " + customer.Name);
+                            customer.Name = Console.ReadLine();
+                            Console.WriteLine("Type a new last name, actual value is " + customer.LastName);
+                            customer.LastName = Console.ReadLine();
+                            Console.WriteLine("Type a new age, actual value is " + customer.Age);
+                            var textAge = Console.ReadLine();
+                            customer.Age = Int32.TryParse(textAge, out int age) ? age : customer.Age;
+
+                            mng.Update(customer);
+                            Console.WriteLine("Customer was updated");
+                        }
+                        else
+                        {
+                            throw new Exception("Customer not registered");
+                        }
+
+                        break;
 
                 }
 
+                Console.WriteLine("Continue? Y/N");
+                var moreActions= Console.ReadLine();
 
-                
-
-                Console.ReadLine();
+                if (moreActions.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
+                    DoIt();
+               
+               
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("***************************");
+                Console.WriteLine("ERROR: " + ex.Message );
+                Console.WriteLine(ex.StackTrace);
             }
 
-            Console.ReadLine();
            
         }
     }

@@ -30,7 +30,16 @@ namespace DataAcess.Crud
 
         public override T Retrieve<T>(BaseEntity entity)
         {
-            throw new NotImplementedException();
+            var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveStatement(entity));
+            var dic = new Dictionary<string, object>();
+            if (lstResult.Count > 0)
+            {
+                dic = lstResult[0];
+                var objs = mapper.BuildObject(dic);
+                return (T)Convert.ChangeType(objs, typeof(T));
+            }
+
+            return default(T);
         }
 
         public override List<T> RetrieveAll<T>()
@@ -53,7 +62,8 @@ namespace DataAcess.Crud
 
         public override void Update(BaseEntity entity)
         {
-            throw new NotImplementedException();
+            var customer = (Customer)entity;
+            dao.ExecuteProcedure(mapper.GetUpdateStatement(customer));
         }
     }
 }

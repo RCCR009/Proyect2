@@ -30,5 +30,14 @@ namespace Testing
             return crudCustomer.RetrieveAll<Customer>();
         }
 
+        public Customer RetrieveById(Customer customer)
+        {
+            return crudCustomer.Retrieve<Customer>(customer);
+        }
+
+        internal void Update(Customer customer)
+        {
+            crudCustomer.Update(customer);
+        }
     }
 }
