@@ -98,11 +98,7 @@ namespace Testing
 
                 }
 
-                Console.WriteLine("Continue? Y/N");
-                var moreActions= Console.ReadLine();
-
-                if (moreActions.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
-                    DoIt();
+               
                
                
 
@@ -112,6 +108,15 @@ namespace Testing
                 Console.WriteLine("***************************");
                 Console.WriteLine("ERROR: " + ex.Message );
                 Console.WriteLine(ex.StackTrace);
+                Console.WriteLine("***************************");
+            }
+            finally
+            {
+                Console.WriteLine("Continue? Y/N");
+                var moreActions = Console.ReadLine();
+
+                if (moreActions.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
+                    DoIt();
             }
 
            
