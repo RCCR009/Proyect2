@@ -10,18 +10,24 @@ namespace Testing
 {
     class CustomerManagement
     {
-        private CustomerCrudFactory crudFactory;
+        private CustomerCrudFactory crudCustomer;
 
         public CustomerManagement()
         {
-            crudFactory = new CustomerCrudFactory();
+            crudCustomer = new CustomerCrudFactory();
         }
 
         public void Create(Customer customer)
         {
-            var crudCustomer = new CustomerCrudFactory();
+            
             crudCustomer.Create(customer);
 
+        }
+
+
+        public List<Customer> RetrieveAll()
+        {
+            return crudCustomer.RetrieveAll<Customer>();
         }
 
     }
