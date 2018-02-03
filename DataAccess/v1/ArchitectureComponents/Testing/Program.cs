@@ -66,6 +66,17 @@ namespace Testing
                         }
 
                         break;
+                    case "3":
+                        Console.WriteLine("Type the customer id:");
+                        customer.Id = Console.ReadLine();
+                        customer = mng.RetrieveById(customer);
+
+                        if (customer != null)
+                        {
+                            Console.WriteLine(" ==> " + customer.GetEntityInformation());
+                        }
+
+                         break;
                     case "4":
                         Console.WriteLine("***************************");
                         Console.WriteLine("******  UPDATE  **    *****");
@@ -96,12 +107,32 @@ namespace Testing
 
                         break;
 
+                    case "5":
+                        Console.WriteLine("Type the customer id:");
+                        customer.Id = Console.ReadLine();
+                        customer = mng.RetrieveById(customer);
+
+                        if (customer != null)
+                        {
+                            Console.WriteLine(" ==> " + customer.GetEntityInformation());
+
+                            Console.WriteLine("Delete? Y/N");
+                            var delete = Console.ReadLine();
+
+                            if (delete.Equals("Y", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                mng.Delete(customer);
+                                Console.WriteLine("Customer was deleted");
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("Customer not registered");
+                        }
+
+                        break;
+
                 }
-
-               
-               
-               
-
             }
             catch (Exception ex)
             {

@@ -23,10 +23,7 @@ namespace DataAcess.Crud
             dao.ExecuteProcedure(sqlOperation);
         }
 
-        public override void Delete(BaseEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public override T Retrieve<T>(BaseEntity entity)
         {
@@ -64,6 +61,12 @@ namespace DataAcess.Crud
         {
             var customer = (Customer)entity;
             dao.ExecuteProcedure(mapper.GetUpdateStatement(customer));
+        }
+
+        public override void Delete(BaseEntity entity)
+        {
+            var customer = (Customer)entity;
+            dao.ExecuteProcedure(mapper.GetDeleteStatement(customer));
         }
     }
 }

@@ -39,5 +39,10 @@ namespace Testing
         {
             crudCustomer.Update(customer);
         }
+
+        internal void Delete(Customer customer)
+        {
+            crudCustomer.Delete(customer);
+        }
     }
 }
