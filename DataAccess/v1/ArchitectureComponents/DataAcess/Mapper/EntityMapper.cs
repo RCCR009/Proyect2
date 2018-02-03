@@ -17,7 +17,7 @@ namespace DataAcess.Mapper
         protected int GetIntValue(Dictionary<string, object> dic, string attName)
         {
             var val = dic[attName];
-            if (dic.ContainsKey(attName) && val is int)
+            if (dic.ContainsKey(attName) && (val is int || val is decimal))
                 return (int) dic[attName];
 
             return -1;

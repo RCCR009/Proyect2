@@ -11,26 +11,58 @@ namespace Testing
     {
         static void Main(string[] args)
         {
+            var mng = new CustomerManagement();
+            var customer = new Customer();
 
             try
             {
-                var customer = new Customer();
-                customer.Id = "0101110114";
-                customer.Name = "Chapulin";
-                customer.LastName = "Colorado";
-                customer.Age = 66;
+                Console.WriteLine("Customers CRUD options");
+                Console.WriteLine("1.CREATE");
+                Console.WriteLine("2.RETRIEVE ALL");
+                Console.WriteLine("3.RETRIEVE BY ID");
+                Console.WriteLine("4.UPDATE");
+                Console.WriteLine("5.DELETE");
 
-                var mng = new CustomerManagement();
-                mng.Create(customer);
+                Console.WriteLine("Choose an option: ");
+                var option = Console.ReadLine();
 
-                Console.WriteLine("Customer was created");
-
-                var lstCustomers = mng.RetrieveAll();
-
-                foreach(var c in lstCustomers)
+                switch (option)
                 {
-                    Console.WriteLine("Name==> " + c.Name);
+                    case "1":
+                        Console.WriteLine("***************************");
+                        Console.WriteLine("*****     CREATE    *******");
+                        Console.WriteLine("***************************");
+                        Console.WriteLine("Type the id, name, last_name and age separated by comma");
+                        var info = Console.ReadLine();
+                        var infoArray = info.Split(',');
+
+                        customer = new Customer(infoArray);
+                        mng.Create(customer);
+
+                        Console.WriteLine("Customer was created");
+
+                        break;
+
+                    case "2":
+                        Console.WriteLine("***************************");
+                        Console.WriteLine("*****  RETRIEVE ALL   *****");
+                        Console.WriteLine("***************************");
+
+                        var lstCustomers = mng.RetrieveAll();
+                        var count = 0;
+
+                        foreach (var c in lstCustomers)
+                        {
+                            count++;
+                            Console.WriteLine( count + " ==> " + c.GetEntityInformation());
+                        }
+
+                        break;
+
                 }
+
+
+                
 
                 Console.ReadLine();
 
