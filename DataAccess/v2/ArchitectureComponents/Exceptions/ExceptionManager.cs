@@ -10,22 +10,20 @@ namespace Exceptions
 {
     public class ExceptionManager
     {
-
+    
         public string PATH = @"C:\_temp\logs\";
 
         private static ExceptionManager instance;
+
         private static string Component { get; set; }
 
-
         private static Dictionary<int, AppMessage> messages = new Dictionary<int, AppMessage>();
-
 
         private ExceptionManager(string component)
         {
             Component = component;
             LoadMessages();
         }
-
 
         public static ExceptionManager GetInstance(string component)
         {
@@ -34,7 +32,6 @@ namespace Exceptions
 
             return instance;
         }
-
 
         public void Process(Exception ex)
         {
@@ -87,11 +84,13 @@ namespace Exceptions
             appMessage.Id = 1;
             appMessage.Message = "Houston we have a problem to connect with the database";
         
+            //TODO: RetriveAll de los mensajes de la base 
+            // de datos y un ciclo para guardarlos en el dic
+            //Como? Por medio del crud correspondiente.
+
             messages.Add(appMessage.Id, appMessage);
 
         }
-
-
 
         private void Log(string logMessage, TextWriter w)
         {

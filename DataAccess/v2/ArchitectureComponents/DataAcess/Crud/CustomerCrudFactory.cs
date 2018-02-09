@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Entities_POJO;
 using DataAcess.Mapper;
 using DataAcess.Dao;
+using Exceptions;
 
 namespace DataAcess.Crud
 {
@@ -18,12 +19,17 @@ namespace DataAcess.Crud
 
         public override void Create(BaseEntity entity)
         {
-            var customer=(Customer) entity;
-            var sqlOperation = mapper.GetCreateStatement(customer);
-            dao.ExecuteProcedure(sqlOperation);
+            try
+            {
+                var customer = (Customer)entity;
+                var sqlOperation = mapper.GetCreateStatement(customer);
+                dao.ExecuteProcedure(sqlOperation);
+            }catch(Exception ex)
+            {
+                ExceptionManager.GetInstance(COMPONENT).Process(ex);
+            }            
         }
 
-      
 
         public override T Retrieve<T>(BaseEntity entity)
         {
