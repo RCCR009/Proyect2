@@ -21,7 +21,6 @@ namespace Exceptions
 
         private ExceptionManager()
         {
-            Component = component;
             LoadMessages();
         }
 
