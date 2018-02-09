@@ -19,7 +19,7 @@ namespace Exceptions
 
         private static Dictionary<int, AppMessage> messages = new Dictionary<int, AppMessage>();
 
-        private ExceptionManager(string component)
+        private ExceptionManager()
         {
             Component = component;
             LoadMessages();
@@ -27,8 +27,10 @@ namespace Exceptions
 
         public static ExceptionManager GetInstance(string component)
         {
+            Component = component;
+
             if (instance == null)
-                instance = new ExceptionManager(component);
+                instance = new ExceptionManager();
 
             return instance;
         }
@@ -53,7 +55,7 @@ namespace Exceptions
 
         private void ProcessBussinesException(BussinessException bex)
         {
-            var today = DateTime.Now;
+            var today = DateTime.Now.ToShortDateString();
             var logName = PATH + today + "_" + Component + "_" + "log.txt";
 
             var message = bex.Message + "\n" + bex.StackTrace + "\n" + bex.InnerException.Message + "\n" + bex.InnerException.StackTrace;
@@ -62,6 +64,8 @@ namespace Exceptions
             {
                 Log(bex.Message, w);
             }
+
+            throw bex;
     
         }
 
