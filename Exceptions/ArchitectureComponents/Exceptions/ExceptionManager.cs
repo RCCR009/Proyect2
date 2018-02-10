@@ -1,10 +1,8 @@
-﻿using Entities_POJO;
+﻿using DataAcess.Crud;
+using Entities_POJO;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exceptions
 {
@@ -15,8 +13,6 @@ namespace Exceptions
 
         private static ExceptionManager instance;
 
-        private static string Component { get; set; }
-
         private static Dictionary<int, AppMessage> messages = new Dictionary<int, AppMessage>();
 
         private ExceptionManager()
@@ -24,10 +20,8 @@ namespace Exceptions
             LoadMessages();
         }
 
-        public static ExceptionManager GetInstance(string component)
+        public static ExceptionManager GetInstance()
         {
-            Component = component;
-
             if (instance == null)
                 instance = new ExceptionManager();
 
@@ -45,7 +39,7 @@ namespace Exceptions
             }
             else
             {
-                bex = new BussinessException(000, ex);
+                bex = new BussinessException(0, ex);
             }
 
             ProcessBussinesException(bex);
@@ -54,15 +48,20 @@ namespace Exceptions
 
         private void ProcessBussinesException(BussinessException bex)
         {
-            var today = DateTime.Now.ToShortDateString();
-            var logName = PATH + today + "_" + Component + "_" + "log.txt";
+            var today = DateTime.Now.ToString("YYYYMMdd");
+            var logName = PATH + today  + "_" + "log.txt";
 
-            var message = bex.Message + "\n" + bex.StackTrace + "\n" + bex.InnerException.Message + "\n" + bex.InnerException.StackTrace;
+            var message = bex.Message + "\n" + bex.StackTrace + "\n";
+
+            if (bex.InnerException!=null)
+                message += bex.InnerException.Message + "\n" + bex.InnerException.StackTrace;
 
             using (StreamWriter w = File.AppendText(logName))
             {
                 Log(bex.Message, w);
             }
+
+            bex.AppMessage = GetMessage(bex);
 
             throw bex;
     
@@ -83,15 +82,15 @@ namespace Exceptions
 
         private void LoadMessages()
         {
-            var appMessage = new AppMessage();
-            appMessage.Id = 1;
-            appMessage.Message = "Houston we have a problem to connect with the database";
-        
-            //TODO: RetriveAll de los mensajes de la base 
-            // de datos y un ciclo para guardarlos en el dic
-            //Como? Por medio del crud correspondiente.
 
-            messages.Add(appMessage.Id, appMessage);
+            var crudMessages = new AppMessagesCrudFactory();
+
+            var lstMessages = crudMessages.RetrieveAll<AppMessage>();
+
+            foreach(var appMessage in lstMessages)
+            {
+                messages.Add(appMessage.Id, appMessage);
+            }  
 
         }
 

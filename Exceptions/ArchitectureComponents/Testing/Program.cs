@@ -1,4 +1,5 @@
 ﻿using Entities_POJO;
+using Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Testing
         public static void DoIt() { 
             try
             {
-                var mng = new CustomerManagement();
+                var mng = new CustomerManager();
                 var customer = new Customer();
 
                 Console.WriteLine("Customers CRUD options");
@@ -134,11 +135,11 @@ namespace Testing
 
                 }
             }
-            catch (Exception ex)
+            catch (BussinessException bex)
             {
                 Console.WriteLine("***************************");
-                Console.WriteLine("ERROR: " + ex.Message );
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine("ERROR: \n");
+                Console.WriteLine(bex.AppMessage.Message);
                 Console.WriteLine("***************************");
             }
             finally
@@ -150,7 +151,7 @@ namespace Testing
                     DoIt();
             }
 
-           
+            Console.ReadLine();
         }
     }
 }

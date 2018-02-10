@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerManagement.cs" />
+    <Compile Include="CustomerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +57,10 @@
     <ProjectReference Include="..\Entities-POJO\Entities-POJO.csproj">
       <Project>{0F68B956-C774-491B-94F7-EC177D7DBD3C}</Project>
       <Name>Entities-POJO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{DE68F413-04DB-453B-BF57-1F234503B808}</Project>
+      <Name>Exceptions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities_POJO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace Exceptions
     public class BussinessException : Exception
     {
         public int ExceptionId;
-        public string ExceptionMessage;
-
+        public AppMessage AppMessage;
+    
         public BussinessException()
         {
 
@@ -18,13 +19,12 @@ namespace Exceptions
 
         public BussinessException(int exceptionId)
         {
-
+            ExceptionId = exceptionId;
         }
 
         public BussinessException(int exceptionId, Exception innerException)
         {
-
-
+            ExceptionId = exceptionId; 
         }
     }
 }
