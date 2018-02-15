@@ -53,7 +53,7 @@ namespace DataAcess.Mapper
 
         public BaseEntity BuildObject(Dictionary<string, object> row)
         {
-            var appMessage = new AppMessage
+            var appMessage = new ApplicationMessage
             {
                 Id = GetIntValue(row, DB_COL_ID),
                 Message = GetStringValue(row, DB_COL_TEXT)

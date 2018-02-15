@@ -179,6 +179,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="ExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +262,10 @@
     <ProjectReference Include="..\Entities-POJO\Entities-POJO.csproj">
       <Project>{0F68B956-C774-491B-94F7-EC177D7DBD3C}</Project>
       <Name>Entities-POJO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{DE68F413-04DB-453B-BF57-1F234503B808}</Project>
+      <Name>Exceptions</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

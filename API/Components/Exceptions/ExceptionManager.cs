@@ -13,7 +13,7 @@ namespace Exceptions
 
         private static ExceptionManager instance;
 
-        private static Dictionary<int, AppMessage> messages = new Dictionary<int, AppMessage>();
+        private static Dictionary<int, ApplicationMessage> messages = new Dictionary<int, ApplicationMessage>();
 
         private ExceptionManager()
         {
@@ -67,10 +67,10 @@ namespace Exceptions
     
         }
 
-        public AppMessage GetMessage(BussinessException bex)
+        public ApplicationMessage GetMessage(BussinessException bex)
         {
 
-            var appMessage = new AppMessage();
+            var appMessage = new ApplicationMessage();
             appMessage.Message = "Message not found!";
 
             if (messages.ContainsKey(bex.ExceptionId))
@@ -85,7 +85,7 @@ namespace Exceptions
 
             var crudMessages = new AppMessagesCrudFactory();
 
-            var lstMessages = crudMessages.RetrieveAll<AppMessage>();
+            var lstMessages = crudMessages.RetrieveAll<ApplicationMessage>();
 
             foreach(var appMessage in lstMessages)
             {

@@ -1,5 +1,7 @@
 ﻿using CoreAPI;
 using Entities_POJO;
+using Exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +11,37 @@ using System.Web.Http;
 
 namespace WebAPI.Controllers
 {
+    [ExceptionFilter]
     public class CustomerController : ApiController
     {
         
-        // GET api/values
+        // GET api/customer
         public IHttpActionResult Get()
         {
+
             var mng = new CustomerManager();
             var lstCustomers = mng.RetrieveAll();   
             return Ok(lstCustomers);
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        // GET api/customer/5
+        public IHttpActionResult Get(string id)
         {
-            return "value";
+            try
+            { 
+                var mng = new CustomerManager();
+                var customer = new Customer
+                {
+                    Id = id
+                };
+
+                customer = mng.RetrieveById(customer);
+                return Ok(customer);
+            }
+            catch (BussinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "-" + bex.AppMessage.Message));
+            }
         }
 
         // POST api/values

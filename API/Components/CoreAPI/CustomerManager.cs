@@ -49,7 +49,21 @@ namespace CoreAPI
 
         public Customer RetrieveById(Customer customer)
         {
-            return crudCustomer.Retrieve<Customer>(customer);
+            Customer c=null;
+            try
+            {
+                c = crudCustomer.Retrieve<Customer>(customer);
+                if (c == null)
+                {
+                    throw new BussinessException(4);
+                }
+            }
+            catch(Exception ex)
+            {
+                ExceptionManager.GetInstance().Process(ex);
+            }
+
+            return c;
         }
 
         internal void Update(Customer customer)

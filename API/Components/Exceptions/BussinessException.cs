@@ -10,7 +10,7 @@ namespace Exceptions
     public class BussinessException : Exception
     {
         public int ExceptionId;
-        public AppMessage AppMessage;
+        public ApplicationMessage AppMessage { get; set; }
     
         public BussinessException()
         {
