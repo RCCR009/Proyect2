@@ -36,7 +36,7 @@ BODY:
     "Age": 33
 }
 
-#CREATE CUSTOMER
+#DELETE CUSTOMER
 
 URL: http://localhost:57056/api/customer/
 METHOD: DELETE
