@@ -8,20 +8,25 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     [ExceptionFilter]
     public class CustomerController : ApiController
     {
-        
+
+        ApiResponse apiResp = new ApiResponse();
+
         // GET api/customer
         public IHttpActionResult Get()
         {
 
+            apiResp = new ApiResponse();
             var mng = new CustomerManager();
-            var lstCustomers = mng.RetrieveAll();   
-            return Ok(lstCustomers);
+            apiResp.Data = mng.RetrieveAll();
+
+            return Ok(apiResp);
         }
 
         // GET api/customer/5
@@ -36,7 +41,9 @@ namespace WebAPI.Controllers
                 };
 
                 customer = mng.RetrieveById(customer);
-                return Ok(customer);
+                apiResp = new ApiResponse();
+                apiResp.Data = customer;
+                return Ok(apiResp);
             }
             catch (BussinessException bex)
             {
@@ -45,18 +52,61 @@ namespace WebAPI.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(Customer customer)
         {
+
+            try
+            {
+                var mng = new CustomerManager();
+                mng.Create(customer);
+
+                apiResp = new ApiResponse();
+                apiResp.Message = "Action was executed.";
+
+                return Ok(apiResp);
+            }
+            catch (BussinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "-" + bex.AppMessage.Message));
+            }
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(Customer customer)
         {
+            try
+            {
+                var mng = new CustomerManager();
+                mng.Update(customer);
+
+                apiResp = new ApiResponse();
+                apiResp.Message = "Action was executed.";
+
+                return Ok(apiResp);
+            }
+            catch (BussinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "-" + bex.AppMessage.Message));
+            }
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(Customer customer)
         {
+            try
+            {
+                var mng = new CustomerManager();
+                mng.Delete(customer);
+
+                apiResp = new ApiResponse();
+                apiResp.Message = "Action was executed.";
+
+                return Ok(apiResp);
+            }
+            catch (BussinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "-" + bex.AppMessage.Message));
+            }
         }
     }
 }

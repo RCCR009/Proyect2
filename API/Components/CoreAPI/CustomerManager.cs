@@ -66,12 +66,12 @@ namespace CoreAPI
             return c;
         }
 
-        internal void Update(Customer customer)
+        public void Update(Customer customer)
         {
             crudCustomer.Update(customer);
         }
 
-        internal void Delete(Customer customer)
+        public void Delete(Customer customer)
         {
             crudCustomer.Delete(customer);
         }

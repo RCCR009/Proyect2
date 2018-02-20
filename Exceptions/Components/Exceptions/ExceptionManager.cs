@@ -48,7 +48,7 @@ namespace Exceptions
 
         private void ProcessBussinesException(BussinessException bex)
         {
-            var today = DateTime.Now.ToString("YYYYMMdd");
+            var today = DateTime.Now.ToString("yyyyMMdd");
             var logName = PATH + today  + "_" + "log.txt";
 
             var message = bex.Message + "\n" + bex.StackTrace + "\n";
