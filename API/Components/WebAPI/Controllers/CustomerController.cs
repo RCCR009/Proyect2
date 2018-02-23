@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        // POST api/values
+        // POST 
         public IHttpActionResult Post(Customer customer)
         {
 
@@ -71,7 +71,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        // PUT api/values/5
+        // PUT
         public IHttpActionResult Put(Customer customer)
         {
             try
@@ -90,7 +90,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        // DELETE api/values/5
+        // DELETE 
         public IHttpActionResult Delete(Customer customer)
         {
             try
