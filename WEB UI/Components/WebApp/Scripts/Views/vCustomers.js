@@ -3,7 +3,7 @@
 	var ctrlActions = new ControlActions();
 	var columns = "Id,Name,LastName,Age";
 
-	ctrlActions.FillTable("customer", 'tblCustomers'); 
+	//ctrlActions.FillTable("customer", 'tblCustomers'); 
 
 
 });

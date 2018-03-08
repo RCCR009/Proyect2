@@ -9,7 +9,8 @@ namespace WebApp.Helpers
 {
     public static class ControlExtensions
     {
-        public static HtmlString CtrlTable(this HtmlHelper html, string id, string title, string columnsTitle, string ColumnsDataName)
+        public static HtmlString CtrlTable(this HtmlHelper html, string id, string title,
+            string columnsTitle, string ColumnsDataName)
         {
             var ctrl = new CtrlTableModel
             {

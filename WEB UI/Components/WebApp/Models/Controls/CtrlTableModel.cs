@@ -31,8 +31,6 @@ namespace WebApp.Models.Controls
                 return headers;
             }
         } 
-
-
         
     }
 }
