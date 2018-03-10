@@ -9,7 +9,7 @@ namespace WebApp.Models.Controls
     {
 
         public string Id { get; set; }
-
+        public string ViewName { get; set; }
 
         private string ReadFileText()
         {

@@ -34,4 +34,18 @@ function ControlActions() {
 			"columns": arrayColumnsData
 		});
 	}
+
+	this.GetSelectedRow = function () {
+		var data = sessionStorage.getItem(tableId + '_selected');
+
+		return data;
+	};
+
+	this.BindFields = function (formId, data) {
+		console.log(data);
+		$('#' + formId +' *').filter(':input').each(function (input) {
+			var columnDataName = $(this).attr("ColumnDataName");
+			this.value = data[columnDataName];
+		});
+	}
 }

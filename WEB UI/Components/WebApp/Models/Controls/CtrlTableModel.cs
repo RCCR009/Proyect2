@@ -15,6 +15,7 @@ namespace WebApp.Models.Controls
         public string Title { get; set; }
         public string Columns { get; set; }
         public string ColumnsDataName { get; set; }
+        public string FunctionName { get; set; }
 
         public int ColumnsCount => Columns.Split(',').Length;
 

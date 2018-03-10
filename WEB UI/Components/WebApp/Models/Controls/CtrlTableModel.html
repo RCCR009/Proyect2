@@ -1,7 +1,19 @@
 ﻿<script>
     $(document).ready(function () {
-        $('#-#Id-').DataTable();
+        var table = $('#-#Id-').DataTable();
+        $('#-#Id- tbody').on('click', 'tr', function () {
+            var data = table.row(this).data();
+            sessionStorage.setItem('-#Id-_selected',data);
+            console.log(data);
+
+            var view = new -#ViewName-();
+            if (view != undefined) {
+                view.-#FunctionName-(data);
+            }
+        });
     });
+
+    
 </script>
 <div class="card border-secondary mb-6">
     <div class="card-header">-#Title-</div>
