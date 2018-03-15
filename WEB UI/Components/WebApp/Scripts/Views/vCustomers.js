@@ -7,26 +7,47 @@ function vCustomers() {
 	this.columns = "Id,Name,LastName,Age";
 
 	this.RetrieveAll = function () {
-		this.ctrlActions.FillTable(this.service, this.tblCustomersId); 		
+		this.ctrlActions.FillTable(this.service, this.tblCustomersId, false); 		
+	}
+
+	this.ReloadTable = function () {
+		this.ctrlActions.FillTable(this.service, this.tblCustomersId, true);
 	}
 
 	this.Create = function () {
-			
+		var customerData = {};
+		customerData = this.ctrlActions.GetDataForm('frmEdition');
+		//Hace el post al create
+		this.ctrlActions.PostToAPI(this.service, customerData);
+		//Refresca la tabla
+		this.ReloadTable();
 	}
 
-	this.Update=function(){
+	this.Update = function () {
+
+		var customerData = {};
+		customerData = this.ctrlActions.GetDataForm('frmEdition');
+		//Hace el post al create
+		this.ctrlActions.PutToAPI(this.service, customerData);
+		//Refresca la tabla
+		this.ReloadTable();
+
+	}
+
+	this.Delete = function () {
+
+		var customerData = {};
+		customerData = this.ctrlActions.GetDataForm('frmEdition');
+		//Hace el post al create
+		this.ctrlActions.DeleteToAPI(this.service, customerData);
+		//Refresca la tabla
+		this.ReloadTable();
 
 	}
 
 	this.BindFields = function (data) {
 		this.ctrlActions.BindFields('frmEdition', data);
-		//console.log(data);
-		//$('#frmEdition *').filter(':input').each(function (input) {
-		//	var columnDataName = $(this).attr("ColumnDataName");
-		//	this.value = data[columnDataName];
-		//});
 	}
-
 }
 
 //ON DOCUMENT READY
