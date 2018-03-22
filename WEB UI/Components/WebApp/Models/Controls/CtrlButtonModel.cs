@@ -11,7 +11,7 @@ namespace WebApp.Models.Controls
         public string Label { get; set; }
         public string FunctionName{ get; set; }
         public string ButtonType { get; set; }
-
+  
         public CtrlButtonModel()
         {
             ViewName = "";

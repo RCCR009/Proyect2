@@ -149,9 +149,11 @@
     <Compile Include="Models\Controls\CtrlBaseModel.cs" />
     <Compile Include="Models\Controls\CtrlButtonModel.cs" />
     <Compile Include="Models\Controls\CtrlInputModel.cs" />
+    <Compile Include="Models\Controls\CtrlDropDownModel.cs" />
     <Compile Include="Models\Controls\CtrlTableModel.cs" />
     <Compile Include="Models\Helpers\ControlExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\SecurityFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -161,6 +163,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Controls\CtrlDropDownModel.html" />
     <Content Include="Models\Controls\CtrlInputModel.html" />
     <Content Include="Models\Controls\CtrlButtonModel.html" />
     <Content Include="Models\Controls\CtrlTableModel.html" />
@@ -202,6 +205,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Home\vCustomers.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities-POJO\Entities-POJO.csproj">
+      <Project>{0F68B956-C774-491B-94F7-EC177D7DBD3C}</Project>
+      <Name>Entities-POJO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

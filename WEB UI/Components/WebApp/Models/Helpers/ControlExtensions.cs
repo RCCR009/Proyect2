@@ -52,5 +52,17 @@ namespace WebApp.Helpers
             return new HtmlString(ctrl.GetHtml());
         }
 
+        public static HtmlString CtrlDropDown(this HtmlHelper html, string id, string label, string listId)
+        {
+            var ctrl = new CtrlDropDownModel
+            {
+                Id = id,
+                Label = label,
+                ListId = listId
+            };
+
+            return new HtmlString(ctrl.GetHtml());
+        }
+
     }
 }
